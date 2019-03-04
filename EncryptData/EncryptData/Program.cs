@@ -15,8 +15,11 @@ namespace EncryptData
 
             var rsa = new System.Security.Cryptography.RSACryptoServiceProvider(2048);
 
-            var publicKeyString = RSAService.getKeyString(rsa.ExportParameters(false));
-            var privateKeyString = RSAService.getKeyString(rsa.ExportParameters(true));
+            //var publicKeyString = RSAService.getKeyString(rsa.ExportParameters(false));
+            //var privateKeyString = RSAService.getKeyString(rsa.ExportParameters(true));
+
+            var publicKeyString = RSAService.toJsonParameters(rsa.ExportParameters(false));
+            var privateKeyString = RSAService.toJsonParameters(rsa.ExportParameters(true));
 
             // Encrypt.
             string cypherText = RSAService.Encrypt(plainText, publicKeyString);
