@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 
-namespace Encoder.Encode
+namespace EncryptData.Encrypt
 {
     class RSAService
     {
         public static string getKeyString(RSAParameters key)
         {
-            var sw = new System.IO.StringWriter();
-            var xs = new System.Xml.Serialization.XmlSerializer(typeof(RSAParameters));
-            xs.Serialize(sw, key);
-            return sw.ToString();
+            var stringWriter = new System.IO.StringWriter();
+            var xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(RSAParameters));
+            xmlSerializer.Serialize(stringWriter, key);
+            return stringWriter.ToString();
         }
 
         public static string Encrypt(string plainText, string publicKeyString)
@@ -24,17 +24,22 @@ namespace Encoder.Encode
             {
                 try
                 {
-                    rsa.FromXmlString(publicKeyString.ToString());
+                    rsa.FromXmlString(publicKeyString);
 
                     var bytesCypherText = rsa.Encrypt(bytesPlainText, true);
                     var cypherText = Convert.ToBase64String(bytesCypherText);
 
                     return cypherText;
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.StackTrace);
+                }
                 finally
                 {
                     rsa.PersistKeyInCsp = false;
                 }
+                return null;
             }
         }
 
@@ -53,10 +58,15 @@ namespace Encoder.Encode
 
                     return plainText.ToString();
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.StackTrace);
+                }
                 finally
                 {
                     rsa.PersistKeyInCsp = false;
                 }
+                return null;
             }
         }
     }
