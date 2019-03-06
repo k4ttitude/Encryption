@@ -9,13 +9,25 @@ namespace EncryptData.CryptoService
 {
     class RSAService
     {
-        //public static string getKeyString(RSAParameters key)
-        //{
-        //    var stringWriter = new System.IO.StringWriter();
-        //    var xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(RSAParameters));
-        //    xmlSerializer.Serialize(stringWriter, key);
-        //    return stringWriter.ToString();
-        //}
+        /// <summary>
+        /// Generate public and private keys: 
+        /// keys[0] = public key, 
+        /// keys[1] = private key.
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GenerateKeys()
+        {
+            var rsa = new System.Security.Cryptography.RSACryptoServiceProvider(2048);
+
+            var publicKeyString = RSAService.toJsonParameters(rsa.ExportParameters(false));
+            var privateKeyString = RSAService.toJsonParameters(rsa.ExportParameters(true));
+
+            return new List<string>
+            {
+                publicKeyString,
+                privateKeyString
+            };
+        }
         
         public static string toJsonParameters(RSAParameters parameters)
         {

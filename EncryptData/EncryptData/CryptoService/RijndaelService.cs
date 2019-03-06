@@ -10,6 +10,23 @@ namespace EncryptData.CryptoService
     class RijndaelService
     {
         /// <summary>
+        /// Generate Input Key and IV: keys[0] = Input Key, keys[1] = IV.
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GenerateKeys()
+        {
+            var rd = System.Security.Cryptography.Rijndael.Create();
+            var inputKeyString = Convert.ToBase64String(rd.Key);
+            var ivString = Convert.ToBase64String(rd.IV);
+
+            return new List<string>
+            {
+                inputKeyString,
+                ivString
+            };
+        }
+
+        /// <summary>
         /// Encrypt Plain Text using Rijndael.
         /// </summary>
         /// <param name="plainText">Plain text</param>
