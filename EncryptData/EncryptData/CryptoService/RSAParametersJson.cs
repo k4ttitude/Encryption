@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace EncryptData.Encrypt
+namespace EncryptData.CryptoService
 {
     [Serializable]
     class RSAParametersJson

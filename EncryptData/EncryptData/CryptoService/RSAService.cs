@@ -5,7 +5,7 @@ using System.Text;
 using System.Security.Cryptography;
 using Newtonsoft.Json;
 
-namespace EncryptData.Encrypt
+namespace EncryptData.CryptoService
 {
     class RSAService
     {
@@ -59,6 +59,7 @@ namespace EncryptData.Encrypt
             }
         }
 
+        // Return the Base64 string representation of the Encrypted Bytes Array 
         public static string Encrypt(string plainText, string publicKeyString)
         {
             var bytesPlainText = Encoding.UTF8.GetBytes(plainText);

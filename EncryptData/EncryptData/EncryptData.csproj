@@ -44,8 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Encrypt\RSAParametersJson.cs" />
-    <Compile Include="Encrypt\RSAService.cs" />
+    <Compile Include="CryptoService\RijndaelService.cs" />
+    <Compile Include="CryptoService\RSAParametersJson.cs" />
+    <Compile Include="CryptoService\RSAService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
