@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.IO;
 
-namespace EncryptData.CryptoService
+namespace Crypto.CryptoService
 {
-    class RijndaelService
+    public class RijndaelService
     {
         /// <summary>
         /// Generate Input Key and IV: keys[0] = Input Key, keys[1] = IV.
@@ -36,7 +37,7 @@ namespace EncryptData.CryptoService
         public static string Encrypt(string plainText, string Key, string IV)
         {
             // Check arguments.
-           if (plainText == null || plainText.Length <= 0)
+            if (plainText == null || plainText.Length <= 0)
                 throw new ArgumentNullException("plainText");
             if (Key == null || Key.Length <= 0)
                 throw new ArgumentNullException("Key");

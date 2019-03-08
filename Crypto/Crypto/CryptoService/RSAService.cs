@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Security.Cryptography;
 using Newtonsoft.Json;
 
-namespace EncryptData.CryptoService
+namespace Crypto.CryptoService
 {
-    class RSAService
+    public class RSAService
     {
         /// <summary>
         /// Generate public and private keys: 
@@ -28,7 +29,7 @@ namespace EncryptData.CryptoService
                 privateKeyString
             };
         }
-        
+
         public static string toJsonParameters(RSAParameters parameters)
         {
             var parasJson = new RSAParametersJson()
